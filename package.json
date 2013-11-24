@@ -1,0 +1,15 @@
+{
+  "name": "shopzilla_api",
+  "version": "0.0.1",
+  "description": "shopzilla api for wishkicker.com",
+  
+  "author": "Tzali Maimon",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/wishkicker/wk-platform/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "should": "~1.2.2"
+  }
+}
