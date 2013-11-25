@@ -263,6 +263,7 @@ var providers = {
                 callback("Got error at getProducts: " + err.message, null);
             }
             else if(products.offers && products.offers.offer){
+                /*
                 var results = products.offers.offer.map(function(product){
                     var ret = {
                         id: product.id,
@@ -289,7 +290,8 @@ var providers = {
                     }
 
                     return ret;
-                });
+                }); */
+                var results = products.offers.offer;
                 callback(null, results);
             }
             else {
