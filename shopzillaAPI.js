@@ -116,19 +116,17 @@ module.exports = exports = function(provider){
                 //minRelevancyScore : 1000,  //meshi: I removed it since there are terms that do not return any thing, and we are getting 250 results sorted by relevancy anyway..
                 imageOnly : true}, apiBase);
 
-            if (exports.provider==='shopzilla') ShopzillaApiCall(productApiPath, query, template, function (err, products){
-                if(err){
-                    callback("Got error at getProducts: " + err.message, null);
-                }
-                else if(products.offers && products.offers.offer){
-                    template.results = products.offers.offer;
-                    callback(null, template);
-                }
+            async.map(provider, function(company, cb) {
+                providers[company](query, template, cb);
+            }, function(err, replies){
+                if (err) callback(err, template);
                 else {
+                    var results = [];
+                    replies.map(function(arr){ results = results.concat(arr); });
+                    template.results = results;
                     callback(null, template);
                 }
             });
-            else callback('no such provider');
         },
         getAttributes: function (template, categoryId, callback){
             var query = _.defaults({
@@ -255,5 +253,48 @@ var lib = {
                 callback(null, []);
             }
         });
+    },
+    unifyProduct : function(product) {
+        var ret = {
+            title : product.title || "",
+            merchantName: product.merchantName || "",
+            merchantLogoUrl: product.merchantLogoUrl || "",
+            url: global.HOST + '/productUrl?url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
+            price: product.price.value,
+            integral : product.price.integral,
+            description : product.description || ""
+        };
+
+        if (product.merchantRating && product.merchantRating.value != undefined){
+            ret.rating = product.merchantRating.value;
+        }
+
+        if (product.images && product.images.image){
+            var img;
+            ret.images = [];
+            for (var i = 0; i < product.images.image.length; i++){
+                img = product.images.image[i];
+                ret.images.push({size : img.xsize, url : img.value});
+            }
+        }
+
+        return ret;
     }
+}
+
+var providers = {
+    'shopzilla': function(query, template, callback) {
+        ShopzillaApiCall(productApiPath, query, template, function (err, products){
+            if(err){
+                callback("Got error at getProducts: " + err.message, null);
+            }
+            else if(products.offers && products.offers.offer){
+                var results = products.offers.offer.map(lib.unifyProduct);
+                callback(null, results);
+            }
+            else {
+                callback(null, []);
+            }
+        });
+    },
 }
