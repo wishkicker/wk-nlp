@@ -7,9 +7,5 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/wishkicker/wk-platform/issues"
-  },
-  "devDependencies": {
-    "mocha": "~1.12.0",
-    "should": "~1.2.2"
   }
 }
