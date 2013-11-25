@@ -116,7 +116,7 @@ module.exports = exports = function(provider){
                 //minRelevancyScore : 1000,  //meshi: I removed it since there are terms that do not return any thing, and we are getting 250 results sorted by relevancy anyway..
                 imageOnly : true}, apiBase);
 
-            ShopzillaApiCall(productApiPath, query, template, function (err, products){
+            if (exports.provider==='shopzilla') ShopzillaApiCall(productApiPath, query, template, function (err, products){
                 if(err){
                     callback("Got error at getProducts: " + err.message, null);
                 }
@@ -128,6 +128,7 @@ module.exports = exports = function(provider){
                     callback(null, template);
                 }
             });
+            else callback('no such provider');
         },
         getAttributes: function (template, categoryId, callback){
             var query = _.defaults({
@@ -192,10 +193,10 @@ module.exports = exports = function(provider){
                     cb(null, {term : term, user: user});
                 },
                 function(template, cb){
-                    exports.getCategoryWithMaxProb(template, cb);
+                    exports(provider).getCategoryWithMaxProb(template, cb);
                 },
                 function(template, cb){
-                    exports.getAttributes(template, categoryId, cb);
+                    exports(provider).getAttributes(template, categoryId, cb);
                 }
             ],
                 callback);
