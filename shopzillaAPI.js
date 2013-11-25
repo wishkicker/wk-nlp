@@ -263,7 +263,33 @@ var providers = {
                 callback("Got error at getProducts: " + err.message, null);
             }
             else if(products.offers && products.offers.offer){
-                var results = products.offers.offer;
+                var results = products.offers.offer.map(function(product){
+                    var ret = {
+                        id: product.id,
+                        title : product.title || "",
+                        merchantName: product.merchantName || "",
+                        merchantLogoUrl: product.merchantLogoUrl || "",
+                        url: global.HOST + '/productUrl?url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
+                        price: product.price.value,
+                        integral : product.price.integral,
+                        description : product.description || ""
+                    };
+
+                    if (product.merchantRating && product.merchantRating.value != undefined){
+                        ret.rating = product.merchantRating.value;
+                    }
+
+                    if (product.images && product.images.image){
+                        var img;
+                        ret.images = [];
+                        for (var i = 0; i < product.images.image.length; i++){
+                            img = product.images.image[i];
+                            ret.images.push({size : img.xsize, url : img.value});
+                        }
+                    }
+
+                    return ret;
+                });
                 callback(null, results);
             }
             else {
