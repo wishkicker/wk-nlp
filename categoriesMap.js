@@ -1,15 +1,42 @@
 global.categoriesMap = {
     shopping:
-        { '10':
-            { name: 'Mailing & Shipping Supplies',
+    { '4':
+    { name: 'Computers & Software',
+        shoppingName: 'Software',
+        id: '96394' },
+        '10':
+        { name: 'Mailing & Shipping Supplies',
+            shoppingName: 'Office Supplies',
+            id: '95263' },
+        '12':
+        { name: 'Calendars, Organizers & Planners',
+            shoppingName: 'Office Supplies',
+            id: '95263' },
+        '13':
+        { name: 'Binders & Accessories',
+            shoppingName: 'Office Supplies',
+            id: '95263' },
+        '24':
+        { name: 'Office Supplies',
+            shoppingName: 'Office Supplies',
+            id: '95263' },
+        '46':
+        { name: 'Janitorial & Breakroom Supplies',
             shoppingName: 'Office Supplies',
             id: '95263' },
         '47':
-            { name: 'Miscellaneous Office & School Supplies',
+        { name: 'Miscellaneous Office & School Supplies',
             shoppingName: 'Office Supplies',
             id: '95263' },
+        '50':
+        { name: 'Health & Beauty Supplies',
+            shoppingName: 'Personal Care',
+            id: '206' },
+        '51': { name: 'DVDs & Videos', shoppingName: 'Movies', id: '63716' },
+        '52': { name: 'Music', shoppingName: 'Music', id: '63717' },
+        '80': { name: 'Books & Magazines', shoppingName: 'Books', id: '63715' },
         '88':
-            { name: 'Perfume & Cologne',
+        { name: 'Perfume & Cologne',
             shoppingName: 'Perfumes and Colognes',
             id: '92' },
         '90': { name: 'Hair Care', shoppingName: 'Personal Care', id: '206' },
@@ -25,6 +52,7 @@ global.categoriesMap = {
             id: '205' },
         '197': { name: 'Cameras', shoppingName: 'Digital Cameras', id: '7185' },
         '209': { name: 'Calculators', shoppingName: 'Calculators', id: '96295' },
+        '212': { name: 'Office Basics', shoppingName: 'Furniture', id: '73188' },
         '220':
         { name: 'Misc. Health & Beauty',
             shoppingName: 'Personal Care',
@@ -45,6 +73,10 @@ global.categoriesMap = {
         { name: 'Plush Toys & Stuffed Animals',
             shoppingName: 'Toys',
             id: '96425' },
+        '250':
+        { name: 'Dental Appliances',
+            shoppingName: 'Health Aids',
+            id: '199' },
         '288': { name: 'Beverage Service', shoppingName: 'Kitchen', id: '69' },
         '290': { name: 'Chafers', shoppingName: 'Kitchen', id: '69' },
         '293':
@@ -141,8 +173,8 @@ global.categoriesMap = {
         '356': { name: 'Plates', shoppingName: 'Kitchen', id: '69' },
         '358':
         { name: 'Rods & Accessories',
-            shoppingName: 'Tools and Accessories',
-            id: '96669' },
+            shoppingName: 'Sport and Outdoor',
+            id: '96424' },
         '364':
         { name: 'Blankets & Throws',
             shoppingName: 'Home Furnishings',
@@ -294,10 +326,7 @@ global.categoriesMap = {
         { name: 'Desktop Computers',
             shoppingName: 'PC Desktops',
             id: '451' },
-        '462':
-        { name: 'Laptop Computers',
-            shoppingName: 'Laptop and Tablet Accessories',
-            id: '1633' },
+        '462': { name: 'Laptop Computers', shoppingName: 'Laptops', id: '9007' },
         '463': { name: 'Sound Cards', shoppingName: 'Sound Cards', id: '1724' },
         '464':
         { name: 'Tape / Cartridge Drives',
@@ -370,8 +399,8 @@ global.categoriesMap = {
             id: '1684' },
         '495':
         { name: 'Networking Products',
-            shoppingName: 'Hubs and Switches',
-            id: '1684' },
+            shoppingName: 'Software',
+            id: '96394' },
         '496':
         { name: 'Cable, DSL & Wireless Modems',
             shoppingName: 'Routers',
@@ -412,8 +441,8 @@ global.categoriesMap = {
             id: '95263' },
         '4601':
         { name: 'Breakroom Supplies',
-            shoppingName: 'Furniture',
-            id: '73188' },
+            shoppingName: 'Craft Supplies',
+            id: '96464' },
         '4602':
         { name: 'Miscellaneous Janitorial & Breakroom Supplies',
             shoppingName: 'Office Supplies',
@@ -424,16 +453,16 @@ global.categoriesMap = {
             id: '63716' },
         '5102':
         { name: 'Children\'s DVDs & Videos',
-            shoppingName: 'Movies',
-            id: '63716' },
+            shoppingName: 'Blu-ray and DVD Players',
+            id: '87' },
         '5103':
         { name: 'Comedy DVDs & Videos',
             shoppingName: 'Movies',
             id: '63716' },
         '5104':
         { name: 'Drama DVDs & Videos',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Movies',
+            id: '63716' },
         '5105':
         { name: 'Special Interest DVDs & Videos',
             shoppingName: 'Movies',
@@ -444,8 +473,8 @@ global.categoriesMap = {
             id: '63716' },
         '5107':
         { name: 'Horror / Suspense DVDs & Videos',
-            shoppingName: 'Movies',
-            id: '63716' },
+            shoppingName: 'In Dash Receivers',
+            id: '96608' },
         '5108':
         { name: 'Music & Musicals DVDs & Videos',
             shoppingName: 'Movies',
@@ -456,8 +485,8 @@ global.categoriesMap = {
             id: '63716' },
         '5110':
         { name: 'Sci-Fi DVDs & Videos',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Movies',
+            id: '63716' },
         '5111':
         { name: 'Sports & Fitness DVDs & Videos',
             shoppingName: 'Movies',
@@ -476,8 +505,8 @@ global.categoriesMap = {
         '5204': { name: 'Country Music', shoppingName: 'Music', id: '63717' },
         '5205':
         { name: 'Easy Listening Music',
-            shoppingName: 'Sheet Music',
-            id: '96629' },
+            shoppingName: 'Music',
+            id: '63717' },
         '5207':
         { name: 'Christian & Gospel Music',
             shoppingName: 'Music',
@@ -493,8 +522,8 @@ global.categoriesMap = {
         '5211': { name: 'Oldies Music', shoppingName: 'Music', id: '63717' },
         '5212':
         { name: 'Pop Vocal Music',
-            shoppingName: 'Sheet Music',
-            id: '96629' },
+            shoppingName: 'Music',
+            id: '63717' },
         '5213':
         { name: 'R&B, Hip Hop & Rap Music',
             shoppingName: 'Clothing',
@@ -509,15 +538,15 @@ global.categoriesMap = {
         { name: 'Miscellaneous Music',
             shoppingName: 'Miscellaneous',
             id: '96392' },
-        '5222': { name: 'Cajun Music', shoppingName: 'Sheet Music', id: '96629' },
+        '5222': { name: 'Cajun Music', shoppingName: 'Music', id: '63717' },
         '5223':
         { name: 'Electronic Music',
             shoppingName: 'Musical Instruments',
             id: '91705' },
         '5224':
         { name: 'Environmental Music',
-            shoppingName: 'Music',
-            id: '63717' },
+            shoppingName: 'Sheet Music',
+            id: '96629' },
         '5225': { name: 'Folk Music', shoppingName: 'Music', id: '63717' },
         '5226':
         { name: 'Hardcore & Punk Music',
@@ -526,12 +555,12 @@ global.categoriesMap = {
         '5227': { name: 'Heavy Metal Music', shoppingName: 'Music', id: '63717' },
         '5228':
         { name: 'Instrumental Music',
-            shoppingName: 'Music',
-            id: '63717' },
+            shoppingName: 'Sheet Music',
+            id: '96629' },
         '5229':
         { name: 'Jazz Vocal Music',
-            shoppingName: 'Music',
-            id: '63717' },
+            shoppingName: 'Sheet Music',
+            id: '96629' },
         '5230': { name: 'New Age Music', shoppingName: 'Music', id: '63717' },
         '5231':
         { name: 'Original Cast Music',
@@ -560,7 +589,10 @@ global.categoriesMap = {
         { name: 'Business & Economics Books',
             shoppingName: 'Books',
             id: '63715' },
-        '8014': { name: 'Cooking Books', shoppingName: 'Books', id: '63715' },
+        '8014':
+        { name: 'Cooking Books',
+            shoppingName: 'Miscellaneous',
+            id: '96392' },
         '8015': { name: 'Computer Books', shoppingName: 'Books', id: '63715' },
         '8016':
         { name: 'Crafts & Hobbies Books',
@@ -582,15 +614,9 @@ global.categoriesMap = {
         { name: 'Health & Fitness Books',
             shoppingName: 'Books',
             id: '63715' },
-        '8024':
-        { name: 'History Books',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
-        '8025':
-        { name: 'House & Home Books',
-            shoppingName: 'Books',
-            id: '63715' },
-        '8026': { name: 'Humor Books', shoppingName: 'Books', id: '63715' },
+        '8024': { name: 'History Books', shoppingName: 'Books', id: '63715' },
+        '8025': { name: 'House & Home Books', shoppingName: 'Pets', id: '96443' },
+        '8026': { name: 'Humor Books', shoppingName: 'Clothing', id: '31515' },
         '8027':
         { name: 'Children\'s Fiction Books',
             shoppingName: 'Books',
@@ -605,7 +631,7 @@ global.categoriesMap = {
             shoppingName: 'Books',
             id: '63715' },
         '8031': { name: 'Mathematics Books', shoppingName: 'Books', id: '63715' },
-        '8032': { name: 'Medical Books', shoppingName: 'Health Aids', id: '199' },
+        '8032': { name: 'Medical Books', shoppingName: 'Books', id: '63715' },
         '8033': { name: 'Nature Books', shoppingName: 'Books', id: '63715' },
         '8034':
         { name: 'Body, Mind & Spirit Books',
@@ -634,13 +660,10 @@ global.categoriesMap = {
             id: '63715' },
         '8047':
         { name: 'Sports & Recreation Books',
-            shoppingName: 'Books',
-            id: '63715' },
+            shoppingName: 'Shoes',
+            id: '96602' },
         '8048': { name: 'Study Aids Books', shoppingName: 'Books', id: '63715' },
-        '8049':
-        { name: 'Technology Books',
-            shoppingName: 'Home Theater Speakers and Subwoofers',
-            id: '1510' },
+        '8049': { name: 'Technology Books', shoppingName: 'Books', id: '63715' },
         '8050':
         { name: 'Transportation Books',
             shoppingName: 'Books',
@@ -650,31 +673,34 @@ global.categoriesMap = {
         '8053': { name: 'Music Books', shoppingName: 'Books', id: '63715' },
         '8054':
         { name: 'Current Events Books',
-            shoppingName: 'Books',
-            id: '63715' },
+            shoppingName: 'Pets',
+            id: '96443' },
         '8055':
         { name: 'Children\'s Non-fiction Books',
             shoppingName: 'Books',
             id: '63715' },
-        '8056':
-        { name: 'Thrillers Books',
-            shoppingName: 'Sheet Music',
-            id: '96629' },
+        '8056': { name: 'Thrillers Books', shoppingName: 'Books', id: '63715' },
         '8057': { name: 'Horror Books', shoppingName: 'Books', id: '63715' },
         '8058':
         { name: 'Mystery & Crime Books',
             shoppingName: 'Books',
             id: '63715' },
-        '8059': { name: 'Romance Books', shoppingName: 'Books', id: '63715' },
+        '8059':
+        { name: 'Romance Books',
+            shoppingName: 'Sheet Music',
+            id: '96629' },
         '8060':
         { name: 'Science Fiction & Fantasy Books',
             shoppingName: 'Books',
             id: '63715' },
-        '8061': { name: 'Westerns Books', shoppingName: 'Books', id: '63715' },
+        '8061':
+        { name: 'Westerns Books',
+            shoppingName: 'Hard Drives',
+            id: '1701' },
         '8062':
         { name: 'Arts & Entertainment Books',
-            shoppingName: 'Books',
-            id: '63715' },
+            shoppingName: 'Software',
+            id: '96394' },
         '8063':
         { name: 'Conflicts & Dualities Books',
             shoppingName: 'Books',
@@ -688,8 +714,8 @@ global.categoriesMap = {
         '8067': { name: 'Erotica Books', shoppingName: 'Books', id: '63715' },
         '8068':
         { name: 'Family & Friendship Books',
-            shoppingName: 'Jewelry',
-            id: '276' },
+            shoppingName: 'Books',
+            id: '63715' },
         '8069': { name: 'Settings Books', shoppingName: 'Books', id: '63715' },
         '8070':
         { name: 'Historical Fiction Books',
@@ -747,8 +773,8 @@ global.categoriesMap = {
             id: '63715' },
         '8086':
         { name: 'Science & Technology Books',
-            shoppingName: 'Toys',
-            id: '96425' },
+            shoppingName: 'Books',
+            id: '63715' },
         '8087':
         { name: 'Hobbies & Activities Books',
             shoppingName: 'Books',
@@ -836,6 +862,15 @@ global.categoriesMap = {
         '8221': { name: 'Pet Costumes', shoppingName: 'Pets', id: '96443' },
         '8222': { name: 'Adult Costumes', shoppingName: 'Toys', id: '96425' },
         '8223': { name: 'Kids\' Costumes', shoppingName: 'Toys', id: '96425' },
+        '8224':
+        { name: 'Costume Accessories',
+            shoppingName: 'Toys',
+            id: '96425' },
+        '8242':
+        { name: 'Halloween Decorations',
+            shoppingName: 'Toys',
+            id: '96425' },
+        '8243': { name: 'Costumes', shoppingName: 'Toys', id: '96425' },
         '8275': { name: 'Chandeliers', shoppingName: 'Lighting', id: '96650' },
         '8304': { name: 'Halloween Decor', shoppingName: 'Toys', id: '96425' },
         '8306': { name: 'Baby Costumes', shoppingName: 'Toys', id: '96425' },
@@ -859,8 +894,8 @@ global.categoriesMap = {
             id: '73188' },
         '8346':
         { name: 'Mattresses & Boxsprings',
-            shoppingName: 'Furniture',
-            id: '73188' },
+            shoppingName: 'Miscellaneous',
+            id: '96392' },
         '8348':
         { name: 'Armoires & Wardrobes',
             shoppingName: 'Furniture',
@@ -1052,8 +1087,8 @@ global.categoriesMap = {
             id: '96339' },
         '9607':
         { name: 'GameCube Consoles',
-            shoppingName: 'Video Game Accessories',
-            id: '96343' },
+            shoppingName: 'Video Games',
+            id: '54214' },
         '9608':
         { name: 'PSP Consoles',
             shoppingName: 'Video Game Consoles',
@@ -1109,8 +1144,8 @@ global.categoriesMap = {
             id: '73188' },
         '9806':
         { name: 'Decorative Wall Tiles',
-            shoppingName: 'Building Supplies',
-            id: '554' },
+            shoppingName: 'Home Furnishings',
+            id: '96441' },
         '9807':
         { name: 'Decorative Wall Letters',
             shoppingName: 'Home Furnishings',
@@ -1150,14 +1185,14 @@ global.categoriesMap = {
         { name: 'Staplers',
             shoppingName: 'Office Supplies',
             id: '95263' },
-        '21211': { name: 'Tape', shoppingName: 'Health Aids', id: '199' },
+        '21211': { name: 'Tape', shoppingName: 'Office Supplies', id: '95263' },
         '21213': { name: 'Pens', shoppingName: 'Office Supplies', id: '95263' },
         '21214': { name: 'Pencils', shoppingName: 'Office Supplies', id: '95263' },
         '21217': { name: 'Paper', shoppingName: 'Craft Supplies', id: '96464' },
         '21220':
         { name: 'Miscellaneous Office Basics',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Furniture',
+            id: '73188' },
         '22001':
         { name: 'Medicine & Remedies',
             shoppingName: 'Nutrition',
@@ -1178,6 +1213,7 @@ global.categoriesMap = {
         { name: 'Dental Appliance Accessories',
             shoppingName: 'Tools and Accessories',
             id: '96669' },
+        '22008': { name: 'Dental Care', shoppingName: 'Personal Care', id: '206' },
         '22009': { name: 'Massagers', shoppingName: 'Personal Care', id: '206' },
         '22010':
         { name: 'Shaving Appliances',
@@ -1207,8 +1243,8 @@ global.categoriesMap = {
             id: '1627' },
         '46006':
         { name: 'PDA Accessories',
-            shoppingName: 'Cellular Accessories',
-            id: '93768' },
+            shoppingName: 'eBook Reader and PDA Accessories',
+            id: '1637' },
         '46007':
         { name: 'UPS & Power Adapters',
             shoppingName: 'Laptop and Tablet Accessories',
@@ -1221,6 +1257,10 @@ global.categoriesMap = {
         { name: 'Power Supplies',
             shoppingName: 'System Power Supplies',
             id: '96452' },
+        '46011':
+        { name: 'Digital Camera Accessories',
+            shoppingName: 'Camcorders and Digital Camera Accessories',
+            id: '87204' },
         '46012':
         { name: 'Printer Accessories',
             shoppingName: 'Printer Accessories',
@@ -1237,10 +1277,14 @@ global.categoriesMap = {
         { name: 'MP3 Player Accessories',
             shoppingName: 'MP3 Accessories',
             id: '87208' },
+        '46016':
+        { name: 'Laptop & Tablet Computer Accessories',
+            shoppingName: 'Laptop and Tablet Accessories',
+            id: '1633' },
         '46017':
         { name: 'Desktop Computer Accessories',
-            shoppingName: 'PC Desktops',
-            id: '451' },
+            shoppingName: 'Computer Speakers',
+            id: '1721' },
         '46018':
         { name: 'Monitor Accessories',
             shoppingName: 'Monitor Accessories',
@@ -1284,8 +1328,8 @@ global.categoriesMap = {
             id: '91705' },
         '521909':
         { name: 'Musical Instrument Microphones',
-            shoppingName: 'Musical Instruments',
-            id: '91705' },
+            shoppingName: 'Microphones',
+            id: '92217' },
         '521910':
         { name: 'Musical Instrument Effects / Processors',
             shoppingName: 'Musical Instruments',
@@ -1314,6 +1358,14 @@ global.categoriesMap = {
         { name: 'Musical Instrument Software / Sample CDs',
             shoppingName: 'Musical Instruments',
             id: '91705' },
+        '10000000':
+        { name: 'Clothing & Accessories',
+            shoppingName: 'Clothing',
+            id: '31515' },
+        '10010000':
+        { name: 'Handbags & Luggage',
+            shoppingName: 'Handbags and Wallets',
+            id: '96668' },
         '10010100': { name: 'Backpacks', shoppingName: 'Luggage', id: '68185' },
         '10010200': { name: 'Briefcases', shoppingName: 'Luggage', id: '68185' },
         '10010300': { name: 'Computer Bags', shoppingName: 'Luggage', id: '68185' },
@@ -1338,8 +1390,16 @@ global.categoriesMap = {
         { name: 'Miscellaneous Handbags & Luggage',
             shoppingName: 'Handbags and Wallets',
             id: '96668' },
+        '10020000':
+        { name: 'Clothes',
+            shoppingName: 'Washer and Dryer Accessories',
+            id: '96489' },
         '10030400':
         { name: 'Infant Bodysuits',
+            shoppingName: 'Clothing',
+            id: '31515' },
+        '10060000':
+        { name: 'Men\'s Clothing',
             shoppingName: 'Clothing',
             id: '31515' },
         '10060300':
@@ -1351,17 +1411,17 @@ global.categoriesMap = {
         { name: 'Suits & Sportcoats',
             shoppingName: 'Clothing',
             id: '31515' },
-        '10060800':
-        { name: 'Sweaters & Vests',
-            shoppingName: 'Clothing',
-            id: '31515' },
         '10061100':
         { name: 'Miscellaneous Men\'s Clothing',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Clothing',
+            id: '31515' },
         '10070000': { name: 'Sunglasses', shoppingName: 'Sunglasses', id: '22686' },
         '10080000': { name: 'Activewear', shoppingName: 'Clothing', id: '31515' },
-        '10090100': { name: 'Dresses', shoppingName: 'Clothing', id: '31515' },
+        '10090000':
+        { name: 'Women\'s Clothing',
+            shoppingName: 'Clothing',
+            id: '31515' },
+        '10090100': { name: 'Dresses', shoppingName: 'Toys', id: '96425' },
         '10090300': { name: 'Denim', shoppingName: 'Clothing', id: '31515' },
         '10090400':
         { name: 'Jackets & Coats',
@@ -1377,6 +1437,10 @@ global.categoriesMap = {
         { name: 'Suits & Blazers',
             shoppingName: 'Clothing',
             id: '31515' },
+        '10090900':
+        { name: 'Sweaters & Vests',
+            shoppingName: 'Clothing',
+            id: '31515' },
         '10091000': { name: 'T-Shirts', shoppingName: 'Clothing', id: '31515' },
         '10091100': { name: 'Shorts', shoppingName: 'Clothing', id: '31515' },
         '10091200':
@@ -1384,6 +1448,7 @@ global.categoriesMap = {
             shoppingName: 'Clothing',
             id: '31515' },
         '10091300': { name: 'Swimwear', shoppingName: 'Clothing', id: '31515' },
+        '10100000': { name: 'Lingerie', shoppingName: 'Clothing', id: '31515' },
         '10100300': { name: 'Bras', shoppingName: 'Clothing', id: '31515' },
         '10100500': { name: 'Camisoles', shoppingName: 'Clothing', id: '31515' },
         '10100900': { name: 'Panties', shoppingName: 'Clothing', id: '31515' },
@@ -1404,11 +1469,15 @@ global.categoriesMap = {
         { name: 'Miscellaneous Men\'s Accessories',
             shoppingName: 'Miscellaneous',
             id: '96392' },
+        '10130000':
+        { name: 'Accessories',
+            shoppingName: 'Auto Parts and Accessories',
+            id: '96477' },
         '10130200':
         { name: 'Gloves & Mittens',
             shoppingName: 'Clothing',
             id: '31515' },
-        '10130300': { name: 'Hats', shoppingName: 'Clothing', id: '31515' },
+        '10130300': { name: 'Hats', shoppingName: 'Toys', id: '96425' },
         '10130400': { name: 'Socks & Tights', shoppingName: 'Clothing', id: '31515' },
         '10130500':
         { name: 'Scarves & Shawls',
@@ -1419,6 +1488,10 @@ global.categoriesMap = {
         { name: 'Miscellaneous Women\'s Accessories',
             shoppingName: 'Miscellaneous',
             id: '96392' },
+        '10140000':
+        { name: 'Maternity Clothes',
+            shoppingName: 'Clothing',
+            id: '31515' },
         '10140100':
         { name: 'Maternity Dresses / Skirts',
             shoppingName: 'Clothing',
@@ -1437,12 +1510,20 @@ global.categoriesMap = {
             shoppingName: 'Clothing',
             id: '31515' },
         '10150000': { name: 'Shoes', shoppingName: 'Shoes', id: '96602' },
+        '10160000':
+        { name: 'Specialty Apparel',
+            shoppingName: 'Plumbing Supplies',
+            id: '96651' },
         '10160500':
         { name: 'Specialty Apparel / Accessories',
             shoppingName: 'Clothing',
             id: '31515' },
         '10180000': { name: 'Underwear', shoppingName: 'Clothing', id: '31515' },
         '10250400': { name: 'Diaper Bags', shoppingName: 'Baby Care', id: '85708' },
+        '11000000':
+        { name: 'Electronics',
+            shoppingName: 'Marine Electronics',
+            id: '96474' },
         '11000100':
         { name: 'Barcode Scanners',
             shoppingName: 'Barcode Scanners',
@@ -1456,10 +1537,7 @@ global.categoriesMap = {
             shoppingName: 'Marine Electronics',
             id: '96474' },
         '11070000': { name: 'Receivers', shoppingName: 'Receivers', id: '439' },
-        '11080000':
-        { name: 'CD Players',
-            shoppingName: 'Portable CD Players',
-            id: '19698' },
+        '11080000': { name: 'CD Players', shoppingName: 'CD Players', id: '434' },
         '11100600':
         { name: 'GPS Accessories',
             shoppingName: 'GPS Accessories',
@@ -1470,8 +1548,8 @@ global.categoriesMap = {
             id: '91705' },
         '11100800':
         { name: 'Photography / Darkroom Equipment',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Photography Accessories',
+            id: '1385' },
         '11100809':
         { name: 'TV-Mounts',
             shoppingName: 'TV Accessories',
@@ -1510,8 +1588,8 @@ global.categoriesMap = {
             id: '1627' },
         '11510902':
         { name: 'Audio/Video Media',
-            shoppingName: 'Cables and Connectors',
-            id: '1627' },
+            shoppingName: 'MP3 Players',
+            id: '89' },
         '11510903':
         { name: 'Telephone Accessories',
             shoppingName: 'Telephone Accessories',
@@ -1539,8 +1617,8 @@ global.categoriesMap = {
             id: '1510' },
         '11580100':
         { name: 'Cell Phones',
-            shoppingName: 'Cellular Phones',
-            id: '93767' },
+            shoppingName: 'Cellular Accessories',
+            id: '93768' },
         '11580300':
         { name: 'Two-Way Radios',
             shoppingName: '2 Way Radios',
@@ -1611,8 +1689,8 @@ global.categoriesMap = {
             id: '1394' },
         '11920000':
         { name: 'XM & Sirius Satellite Radios',
-            shoppingName: 'Satellite Radio Receivers',
-            id: '96636' },
+            shoppingName: 'Satellite Radio Accessories',
+            id: '96637' },
         '11930000':
         { name: 'Car Speakers',
             shoppingName: 'Car Speakers and Subwoofers',
@@ -1635,6 +1713,10 @@ global.categoriesMap = {
         { name: 'DVD/VCR Combos',
             shoppingName: 'Blu-ray and DVD Players',
             id: '87' },
+        '12000000':
+        { name: 'Sports Equipment & Outdoor Gear',
+            shoppingName: 'Sport and Outdoor',
+            id: '96424' },
         '12000100':
         { name: 'Bowling Equipment',
             shoppingName: 'Sport and Outdoor',
@@ -1659,8 +1741,8 @@ global.categoriesMap = {
             id: '31515' },
         '12000800':
         { name: 'Track & Field Equipment',
-            shoppingName: 'Video Games',
-            id: '54214' },
+            shoppingName: 'Sport and Outdoor',
+            id: '96424' },
         '12020300':
         { name: 'Softball & Baseball Equipment',
             shoppingName: 'Sport and Outdoor',
@@ -1673,24 +1755,40 @@ global.categoriesMap = {
         { name: 'Camping & Hiking Gear',
             shoppingName: 'Sport and Outdoor',
             id: '96424' },
+        '12050100':
+        { name: 'Fitness Equipment',
+            shoppingName: 'Sport and Outdoor',
+            id: '96424' },
         '12060200':
         { name: 'Football Equipment',
             shoppingName: 'Sport and Outdoor',
             id: '96424' },
+        '12070300':
+        { name: 'Golf Gifts & Equipment',
+            shoppingName: 'Clothing',
+            id: '31515' },
         '12080100':
         { name: 'Roller & Ice Hockey Equipment',
             shoppingName: 'Sport and Outdoor',
             id: '96424' },
         '12090100':
         { name: 'Snowboarding Equipment',
-            shoppingName: 'Sport and Outdoor',
-            id: '96424' },
+            shoppingName: 'Video Games',
+            id: '54214' },
         '12100200':
         { name: 'Soccer Equipment',
             shoppingName: 'Sport and Outdoor',
             id: '96424' },
+        '12110300':
+        { name: 'Tennis Clothing & Equipment',
+            shoppingName: 'Clothing',
+            id: '31515' },
         '12120100':
         { name: 'Fishing Gear',
+            shoppingName: 'Sport and Outdoor',
+            id: '96424' },
+        '12130100':
+        { name: 'Bicycles & Equipment',
             shoppingName: 'Sport and Outdoor',
             id: '96424' },
         '12130300':
@@ -1699,8 +1797,8 @@ global.categoriesMap = {
             id: '96478' },
         '12130400':
         { name: 'Skateboarding Equipment',
-            shoppingName: 'Video Games',
-            id: '54214' },
+            shoppingName: 'Sport and Outdoor',
+            id: '96424' },
         '12130500':
         { name: 'Inline & Roller Skate Equipment',
             shoppingName: 'Sport and Outdoor',
@@ -1757,14 +1855,16 @@ global.categoriesMap = {
         { name: 'Water Skiing Equipment',
             shoppingName: 'Sport and Outdoor',
             id: '96424' },
+        '13000000': { name: 'Home & Garden', shoppingName: 'Garden', id: '113' },
         '13000100': { name: 'Kitchen Tools', shoppingName: 'Kitchen', id: '69' },
         '13000200': { name: 'Cutlery', shoppingName: 'Kitchen', id: '69' },
-        '13010100':
-        { name: 'Outdoor Decor',
-            shoppingName: 'Home Furnishings',
-            id: '96441' },
+        '13010100': { name: 'Outdoor Decor', shoppingName: 'Garden', id: '113' },
         '13010200': { name: 'Garden Tools', shoppingName: 'Garden', id: '113' },
         '13010300': { name: 'Seeds & Bulbs', shoppingName: 'Garden', id: '113' },
+        '13010500':
+        { name: 'Outdoor Furniture',
+            shoppingName: 'Furniture',
+            id: '73188' },
         '13010600':
         { name: 'Outdoor Cooking',
             shoppingName: 'Grills and Smokers',
@@ -1780,6 +1880,11 @@ global.categoriesMap = {
         { name: 'Water Garden & Irrigation Supplies',
             shoppingName: 'Garden',
             id: '113' },
+        '13020200': { name: 'Home Decor', shoppingName: 'Furniture', id: '73188' },
+        '13020202':
+        { name: 'Wall Decor',
+            shoppingName: 'Home Furnishings',
+            id: '96441' },
         '13020203':
         { name: 'Picture Frames',
             shoppingName: 'Home Furnishings',
@@ -1799,8 +1904,20 @@ global.categoriesMap = {
         { name: 'Miscellaneous Home Decor',
             shoppingName: 'Home Furnishings',
             id: '96441' },
+        '13020211':
+        { name: 'Holiday Ornaments & Decor',
+            shoppingName: 'Home Furnishings',
+            id: '96441' },
+        '13020212':
+        { name: 'Fireplace & Accessories',
+            shoppingName: 'Home Furnishings',
+            id: '96441' },
         '13020213':
         { name: 'Figurines',
+            shoppingName: 'Home Furnishings',
+            id: '96441' },
+        '13020300':
+        { name: 'Window Treatments',
             shoppingName: 'Home Furnishings',
             id: '96441' },
         '13020301':
@@ -1819,6 +1936,12 @@ global.categoriesMap = {
         { name: 'Bath Accessories',
             shoppingName: 'Home Furnishings',
             id: '96441' },
+        '13040200': { name: 'Tableware', shoppingName: 'Kitchen', id: '69' },
+        '13040203':
+        { name: 'Dinnerware & Serveware',
+            shoppingName: 'Kitchen',
+            id: '69' },
+        '13040204': { name: 'Drinkware', shoppingName: 'Kitchen', id: '69' },
         '13040205': { name: 'Flatware', shoppingName: 'Kitchen', id: '69' },
         '13040206':
         { name: 'Miscellaneous Tableware',
@@ -1833,10 +1956,7 @@ global.categoriesMap = {
             shoppingName: 'Home Furnishings',
             id: '96441' },
         '13050200': { name: 'Cooking & Baking', shoppingName: 'Kitchen', id: '69' },
-        '13050801':
-        { name: 'Breadmakers',
-            shoppingName: 'Bread Machines',
-            id: '96302' },
+        '13050801': { name: 'Breadmakers', shoppingName: 'Furniture', id: '73188' },
         '13050802':
         { name: 'Coffee Makers',
             shoppingName: 'Espresso Machines & Coffee Makers',
@@ -1887,10 +2007,7 @@ global.categoriesMap = {
         { name: 'Range Hoods',
             shoppingName: 'Kitchen Hoods',
             id: '96458' },
-        '13050820':
-        { name: 'Tea Kettles',
-            shoppingName: 'Electric Kettles',
-            id: '96494' },
+        '13050820': { name: 'Tea Kettles', shoppingName: 'Kitchen', id: '69' },
         '13050821':
         { name: 'Waffle Makers',
             shoppingName: 'Waffle Makers',
@@ -1935,10 +2052,7 @@ global.categoriesMap = {
         { name: 'Ovens',
             shoppingName: 'Kitchen Ovens and Cooktops',
             id: '1896' },
-        '13050906':
-        { name: 'Dishwashers',
-            shoppingName: 'Dishwasher Accessories',
-            id: '96483' },
+        '13050906': { name: 'Dishwashers', shoppingName: 'Dishwashers', id: '1894' },
         '13050907':
         { name: 'Washers & Dryers',
             shoppingName: 'Washing Machines',
@@ -1948,6 +2062,10 @@ global.categoriesMap = {
             shoppingName: 'Refrigerators and Freezers',
             id: '1889' },
         '13060100': { name: 'Furniture', shoppingName: 'Furniture', id: '73188' },
+        '13060200':
+        { name: 'Bedding',
+            shoppingName: 'Home Furnishings',
+            id: '96441' },
         '13060201':
         { name: 'Miscellaneous Baby & Kids\' Bedding',
             shoppingName: 'Baby Care',
@@ -1957,6 +2075,11 @@ global.categoriesMap = {
             shoppingName: 'Home Furnishings',
             id: '96441' },
         '13060203': { name: 'Baby Bedding', shoppingName: 'Baby Care', id: '85708' },
+        '13070300': { name: 'Lighting', shoppingName: 'Lighting', id: '96650' },
+        '13080200':
+        { name: 'Desk Accessories',
+            shoppingName: 'Office Supplies',
+            id: '95263' },
         '13080201': { name: 'Desk Sets', shoppingName: 'Furniture', id: '73188' },
         '13080202':
         { name: 'Organizers, Etc.',
@@ -1970,6 +2093,7 @@ global.categoriesMap = {
         { name: 'Cleaning Supplies',
             shoppingName: 'Office Supplies',
             id: '95263' },
+        '13090200': { name: 'Baby Gear', shoppingName: 'Baby Care', id: '85708' },
         '13090201':
         { name: 'Strollers / Joggers',
             shoppingName: 'Strollers',
@@ -2003,8 +2127,8 @@ global.categoriesMap = {
             id: '85708' },
         '13090211':
         { name: 'Miscellaneous Baby Gear',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Baby Care',
+            id: '85708' },
         '13110101':
         { name: 'Air Conditioners',
             shoppingName: 'Air Conditioners',
@@ -2012,8 +2136,8 @@ global.categoriesMap = {
         '13110102': { name: 'Humidifiers', shoppingName: 'Humidifiers', id: '96333' },
         '13110103':
         { name: 'Electric Irons',
-            shoppingName: 'Sport and Outdoor',
-            id: '96424' },
+            shoppingName: 'Home Furnishings',
+            id: '96441' },
         '13110104': { name: 'Fans', shoppingName: 'Electric Fans', id: '96502' },
         '13110105':
         { name: 'Sewing Machines',
@@ -2041,10 +2165,18 @@ global.categoriesMap = {
         { name: 'Kitchen Furniture',
             shoppingName: 'Furniture',
             id: '73188' },
+        '13170104':
+        { name: 'Bedroom Furniture',
+            shoppingName: 'Furniture',
+            id: '73188' },
         '13170105':
         { name: 'Miscellaneous Furniture',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Furniture',
+            id: '73188' },
+        '13600000':
+        { name: 'Arts & Crafts Supplies',
+            shoppingName: 'Craft Supplies',
+            id: '96464' },
         '13600100':
         { name: 'Art Supplies',
             shoppingName: 'Craft Supplies',
@@ -2057,7 +2189,13 @@ global.categoriesMap = {
         { name: 'Miscellaneous Arts & Crafts Supplies',
             shoppingName: 'Craft Supplies',
             id: '96464' },
+        '14000000': { name: 'Toys', shoppingName: 'Toys', id: '96425' },
         '14010100': { name: 'Action Figures', shoppingName: 'Toys', id: '96425' },
+        '14010200': { name: 'Pretend Play', shoppingName: 'Toys', id: '96425' },
+        '14010202':
+        { name: 'Costumes & Accessories',
+            shoppingName: 'Toys',
+            id: '96425' },
         '14010204': { name: 'Role Playing Toys', shoppingName: 'Toys', id: '96425' },
         '14010206': { name: 'Musical Toys', shoppingName: 'Toys', id: '96425' },
         '14010211':
@@ -2080,6 +2218,7 @@ global.categoriesMap = {
         '14010600': { name: 'Dolls', shoppingName: 'Toys', id: '96425' },
         '14010700': { name: 'Games & Puzzles', shoppingName: 'Toys', id: '96425' },
         '14010800': { name: 'Outdoor Play', shoppingName: 'Toys', id: '96425' },
+        '14010900': { name: 'Baby Toys', shoppingName: 'Toys', id: '96425' },
         '14010901': { name: 'Bath & Water Toys', shoppingName: 'Toys', id: '96425' },
         '14010902':
         { name: 'Crib & Stroller Toys',
@@ -2105,6 +2244,10 @@ global.categoriesMap = {
             id: '96425' },
         '14011500': { name: 'Toy Vehicles', shoppingName: 'Toys', id: '96425' },
         '15010100': { name: 'Video Games', shoppingName: 'Video Games', id: '54214' },
+        '15010200':
+        { name: 'Video Game Accessories',
+            shoppingName: 'Video Game Accessories',
+            id: '96343' },
         '15010201':
         { name: 'Dreamcast Accessories',
             shoppingName: 'Video Game Accessories',
@@ -2141,6 +2284,10 @@ global.categoriesMap = {
         { name: 'Nintendo DS Accessories',
             shoppingName: 'Video Game Accessories',
             id: '96343' },
+        '15010300':
+        { name: 'Video Game Consoles',
+            shoppingName: 'Video Game Consoles',
+            id: '96339' },
         '15010301':
         { name: 'Dreamcast Consoles',
             shoppingName: 'Video Game Accessories',
@@ -2167,8 +2314,8 @@ global.categoriesMap = {
             id: '96343' },
         '15010307':
         { name: 'Game Boy Advance Consoles',
-            shoppingName: 'Video Game Consoles',
-            id: '96339' },
+            shoppingName: 'Video Games',
+            id: '54214' },
         '15010308':
         { name: 'Miscellaneous Video Game Consoles',
             shoppingName: 'Video Game Consoles',
@@ -2181,6 +2328,10 @@ global.categoriesMap = {
         { name: 'Miscellaneous Video Games',
             shoppingName: 'Video Games',
             id: '54214' },
+        '16000000':
+        { name: 'Gifts, Flowers & Food',
+            shoppingName: 'Food and Drink',
+            id: '96446' },
         '16010300':
         { name: 'Tobacco Products',
             shoppingName: 'Cigars and Tobacco Accessories',
@@ -2207,6 +2358,10 @@ global.categoriesMap = {
         { name: 'Collectibles',
             shoppingName: 'Gifts and Collectibles',
             id: '41186' },
+        '16030100':
+        { name: 'Chocolate & Sweets',
+            shoppingName: 'Food and Drink',
+            id: '96446' },
         '16030101':
         { name: 'Chocolate',
             shoppingName: 'Gifts and Collectibles',
@@ -2222,16 +2377,13 @@ global.categoriesMap = {
             id: '96446' },
         '16030106':
         { name: 'Miscellaneous Chocolate & Sweets',
-            shoppingName: 'Miscellaneous',
-            id: '96392' },
+            shoppingName: 'Food and Drink',
+            id: '96446' },
         '16030600':
         { name: 'Food & Snacks',
             shoppingName: 'Food and Drink',
             id: '96446' },
-        '16030700':
-        { name: 'Coffee & Tea',
-            shoppingName: 'Food and Drink',
-            id: '96446' },
+        '16030700': { name: 'Coffee & Tea', shoppingName: 'Kitchen', id: '69' },
         '16031100': { name: 'Cheese', shoppingName: 'Food and Drink', id: '96446' },
         '16031200':
         { name: 'Condiments, Seasoning & Sauces',
@@ -2247,6 +2399,11 @@ global.categoriesMap = {
         { name: 'Liquor, Spirits & Beers',
             shoppingName: 'Spirits and Beers',
             id: '390' },
+        '17000000': { name: 'Babies & Kids', shoppingName: 'Baby Care', id: '85708' },
+        '18000000':
+        { name: 'Appliances',
+            shoppingName: 'Refrigerators and Freezers',
+            id: '1889' },
         '18004200':
         { name: 'Yogurt Makers',
             shoppingName: 'Ice Cream Makers',
@@ -2269,8 +2426,8 @@ global.categoriesMap = {
             id: '96310' },
         '18004700':
         { name: 'Vacuum Food Sealers',
-            shoppingName: 'Kitchen',
-            id: '69' },
+            shoppingName: 'Specialty Kitchen Appliances',
+            id: '96310' },
         '18004800':
         { name: 'Sandwich Makers',
             shoppingName: 'Indoor Grills and Sandwich Makers',
@@ -2286,8 +2443,8 @@ global.categoriesMap = {
         '18005100': { name: 'Wine Cellars', shoppingName: 'Wine', id: '391' },
         '18005200':
         { name: 'Warming Drawers',
-            shoppingName: 'Specialty Kitchen Appliances',
-            id: '96310' },
+            shoppingName: 'Furniture',
+            id: '73188' },
         '18005300': { name: 'Electric Knives', shoppingName: 'Kitchen', id: '69' },
         '18005400':
         { name: 'Electric Knife Sharpeners',
@@ -2306,14 +2463,26 @@ global.categoriesMap = {
         { name: 'Snow Cone & Ice Shavers',
             shoppingName: 'Specialty Kitchen Appliances',
             id: '96310' },
+        '20000000':
+        { name: 'Other Products',
+            shoppingName: 'Furniture',
+            id: '73188' },
         '20000001':
         { name: 'Miscellaneous',
             shoppingName: 'Miscellaneous',
             id: '96392' },
+        '21000000':
+        { name: 'Musical Instruments & Accessories',
+            shoppingName: 'Musical Instruments',
+            id: '91705' },
         '21000100':
         { name: 'Karaoke Media',
             shoppingName: 'Media Streamers',
             id: '96623' },
+        '22000000':
+        { name: 'Automotive',
+            shoppingName: 'Auto Parts and Accessories',
+            id: '96477' },
         '22000100':
         { name: 'Automotive Care',
             shoppingName: 'Personal Care',
@@ -2378,6 +2547,10 @@ global.categoriesMap = {
         { name: 'Building Supplies',
             shoppingName: 'Building Supplies',
             id: '554' },
+        '25010000':
+        { name: 'Office Furniture',
+            shoppingName: 'Furniture',
+            id: '73188' },
         '25010200': { name: 'Bookcases', shoppingName: 'Furniture', id: '73188' },
         '25010300': { name: 'Chairs', shoppingName: 'Furniture', id: '73188' },
         '25010400': { name: 'Desks', shoppingName: 'Furniture', id: '73188' },
@@ -2386,6 +2559,7 @@ global.categoriesMap = {
         { name: 'Miscellaneous Office Furniture',
             shoppingName: 'Furniture',
             id: '73188' },
+        '30000000': { name: 'Jewelry', shoppingName: 'Jewelry', id: '276' },
         '30000200': { name: 'Charms', shoppingName: 'Jewelry', id: '276' },
         '30010101': { name: 'Bracelets', shoppingName: 'Jewelry', id: '276' },
         '30010102': { name: 'Earrings', shoppingName: 'Jewelry', id: '276' },
@@ -2405,6 +2579,7 @@ global.categoriesMap = {
         '30010110': { name: 'Jewelry Boxes', shoppingName: 'Jewelry', id: '276' },
         '30010112': { name: 'Jewelry Sets', shoppingName: 'Jewelry', id: '276' },
         '30020100': { name: 'Watches', shoppingName: 'Watches', id: '277' },
+        '31000000': { name: 'Pet Supplies', shoppingName: 'Pets', id: '96443' },
         '31000100': { name: 'Bird Supplies', shoppingName: 'Pets', id: '96443' },
         '31000200': { name: 'Cat Supplies', shoppingName: 'Pets', id: '96443' },
         '31000300': { name: 'Dog Supplies', shoppingName: 'Pets', id: '96443' },
@@ -2435,8 +2610,8 @@ global.categoriesMap = {
             id: '96605' },
         '100000495':
         { name: 'Camera Accessory Kits',
-            shoppingName: 'Digital Cameras',
-            id: '7185' },
+            shoppingName: 'Camcorders and Digital Camera Accessories',
+            id: '87204' },
         '100000594': { name: 'Vests', shoppingName: 'Clothing', id: '31515' },
         '100000682':
         { name: 'Kids\' Gloves & Mittens',
@@ -2449,7 +2624,8 @@ global.categoriesMap = {
             id: '95263' },
         '100000808': { name: 'Digital Book Readers', shoppingName: 'PDAs', id: '9' },
         '100000852': { name: 'Classical Music', shoppingName: 'Music', id: '63717' },
-        '100001162': { name: 'Sweaters', shoppingName: 'Clothing', id: '31515' },
+        '100001120': { name: 'Outerwear', shoppingName: 'Clothing', id: '31515' },
+        '100001162': { name: 'Sweaters', shoppingName: 'Shoes', id: '96602' },
         '100001163': { name: 'Cardigans', shoppingName: 'Clothing', id: '31515' },
         '100001164': { name: 'Sweater Vests', shoppingName: 'Clothing', id: '31515' },
         '100001221':
@@ -2484,6 +2660,10 @@ global.categoriesMap = {
         { name: 'Air Purifier Accessories',
             shoppingName: 'Air Purifiers',
             id: '96335' },
+        '100001252':
+        { name: 'Appliances Accessories',
+            shoppingName: 'Tools and Accessories',
+            id: '96669' },
         '100001254':
         { name: 'Mixer Accessories',
             shoppingName: 'Kitchen Electrics Accessories',
@@ -2592,7 +2772,6 @@ global.categoriesMap = {
         { name: 'Dresses / Skirts',
             shoppingName: 'Clothing',
             id: '31515' },
-        '100001747': { name: 'Outerwear', shoppingName: 'Clothing', id: '31515' },
         '100001748': { name: 'Tops', shoppingName: 'Shoes', id: '96602' },
         '100001751':
         { name: 'Miscellaneous Baby & Kids\' Clothes',
@@ -2614,8 +2793,8 @@ global.categoriesMap = {
             id: '96392' },
         '100002003':
         { name: 'Digital Book Reader Accessories',
-            shoppingName: 'eBook Reader and PDA Accessories',
-            id: '1637' },
+            shoppingName: 'Camcorders and Digital Camera Accessories',
+            id: '87204' },
         '100002024':
         { name: 'Tennis Racquets',
             shoppingName: 'Sport and Outdoor',

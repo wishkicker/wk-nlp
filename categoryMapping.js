@@ -1,5 +1,4 @@
-var fs = require('fs'),
-    async = require('async'),
+var async = require('async'),
     http = require('http'),
     _ = require('underscore');
 
@@ -13,19 +12,20 @@ var options = {
 function addItems(list, array) {
     for (var index in array) {
         if (array[index].children) addItems(list, array[index].children.category);
-        else list[array[index].name]=array[index].id;
+        if (array[index].name && array[index].id) list[array[index].name]=array[index].id;
     }
 };
 
 var runner = function() {
     var result = {};
-    require('shopzilla_api')({}).getCategoriesTree(100000, function(err, tree){
+    require('./shopzillaAPI.js')({}).getCategoriesTree(100000, function(err, tree){
         var list = [];
         if (err) {
             console.log(err);
         } else {
             var categoryTree = tree.taxonomy.categories.category[0].children.category;
             addItems(list, categoryTree);
+            console.log('found: '+ _.keys(list).length);
 
             async.map(_.keys(list), function(cat, cb){
                 var request = 'http://api.ebaycommercenetwork.com/publisher/3.0/json/GeneralSearch?visitorUserAgent&visitorIPAddress&keyword='+encodeURIComponent(cat);
@@ -46,7 +46,6 @@ var runner = function() {
                             try {
                                 data = JSON.parse(data).categories.category[0];
                                 result[list[cat]]={name:cat, shoppingName: data.name, id: data.id};
-                                console.log('done - '+cat);
                                 cb(null, data);
                             } catch(e) { cb(e); }
                         }
@@ -54,6 +53,7 @@ var runner = function() {
                 });
             }, function(err, replies){
                 if (err) console.log(err);
+                console.log("done: "+ _.keys(result).length);
                 console.log(result);
             });
         }
