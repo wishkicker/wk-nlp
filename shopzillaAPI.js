@@ -34,7 +34,6 @@ var SUFFICIENT_PROBABILITY = 0.8,
     MAX_SEARCH_CATEGORIES = 50,
     DICTIONARY_CATEGORIES_COUNT = 10;
 
-
 /// local functions
 var createQsFromObject = function (object){
         var qs = '';
@@ -65,7 +64,7 @@ var createQsFromObject = function (object){
                             results=[];
                         }
                         done=results;
-                        global.monitor.timing(global.monitor.SHOPZILLA_RESPONSE_TIME, Date.now() - startTime);
+                        global.shopzillaMonitor.timing(global.monitor.SHOPZILLA_RESPONSE_TIME, Date.now() - startTime);
                         next();
                     });
 
@@ -95,36 +94,16 @@ module.exports = exports = function(provider){
             });
         },
         getProducts: function (template, start, categoryId, callback){
-            var query = _.extend({
-                placementId : 1,
-                productIdType : 'SZPID',
-                categoryId: categoryId,
-                offersOnly : true,
-                biddedOnly : false,
-                minPrice : '',
-                maxPrice : '',
-                start : start,
-                results : 50,
-                backfillResults : 0,
-                startOffers : 0,
-                resultsOffers : 0,
-                sort : 'relevancy_desc',
-                attributeId: '',
-                resultsAttribute: 10,
-//            showAttributes : true,
-//            showProductAttributes : true,
-                //minRelevancyScore : 1000,  //meshi: I removed it since there are terms that do not return any thing, and we are getting 250 results sorted by relevancy anyway..
-                imageOnly : true}, apiBase);
-
-            async.map(provider, function(company, cb) {
-                providers[company](query, template, cb);
+            template.categoryId = categoryId;
+            template.start = start;
+            async.map(_.keys(provider), function(company, cb) {
+                providers[company](template, cb);
             }, function(err, replies){
                 if (err) callback(err, template);
                 else {
                     var results = [];
                     replies.map(function(arr){ results = results.concat(arr); });
-                    template.results = results;
-                    callback(null, template);
+                    callback(null, results);
                 }
             });
         },
@@ -222,7 +201,7 @@ var lib = {
             if(err){
                 callback("Got error: " + err.message, null);
             }
-            else if(categories && categories.taxonomy && categories.taxonomy.categories.category && categories.taxonomy.categories.category.length>0){
+            else if(categories && categories.taxonomy && categories.taxonomy.categories && categories.taxonomy.categories.category && categories.taxonomy.categories.category.length>0){
                 var categories = categories.taxonomy.categories.category,
                     category,
                     maxProb = 0,
@@ -257,39 +236,30 @@ var lib = {
 }
 
 var providers = {
-    'shopzilla': function(query, template, callback) {
+    'shopzilla': function(template, callback) {
+        var query = _.extend({
+            placementId : 1,
+            productIdType : 'SZPID',
+            categoryId: template.categoryId,
+            offersOnly : true,
+            biddedOnly : false,
+            minPrice : '',
+            maxPrice : '',
+            start : template.start,
+            results : exports.provider['shopzilla'] || 0,
+            backfillResults : 0,
+            startOffers : 0,
+            resultsOffers : 0,
+            sort : 'relevancy_desc',
+            attributeId: '',
+            resultsAttribute: 10,
+            imageOnly : true}, apiBase);
         ShopzillaApiCall(productApiPath, query, template, function (err, products){
             if(err){
                 callback("Got error at getProducts: " + err.message, null);
             }
             else if(products.offers && products.offers.offer){
-                var results = products.offers.offer.map(function(product){
-                    var ret = {
-                        id: product.id,
-                        title : product.title || "",
-                        merchantName: product.merchantName || "",
-                        merchantLogoUrl: product.merchantLogoUrl || "",
-                        url: global.HOST + '/productUrl?url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
-                        price: product.price.value,
-                        integral : product.price.integral,
-                        description : product.description || ""
-                    };
-
-                    if (product.merchantRating && product.merchantRating.value != undefined){
-                        ret.rating = product.merchantRating.value;
-                    }
-
-                    if (product.images && product.images.image){
-                        var img;
-                        ret.images = [];
-                        for (var i = 0; i < product.images.image.length; i++){
-                            img = product.images.image[i];
-                            ret.images.push({size : img.xsize, url : img.value});
-                        }
-                    }
-
-                    return ret;
-                });
+                var results = products.offers.offer.map(unifiers['shopzilla']);
                 callback(null, results);
             }
             else {
@@ -297,4 +267,115 @@ var providers = {
             }
         });
     },
+    'shopping': function(template, callback) {
+        var options = {
+            apiKey: '6c7b8b0d-3791-4db1-a8d6-c797890f1294',
+            trackingId: '8070536',
+            numItems: exports.provider['shopping'] || 0,
+            showProductOffers: 'true',
+            doSkipping: 'true',
+            itemsSortType: 'relevance',
+            itemsSortOrder: 'descending',
+            productOffersSortType: 'relevance',
+            productOffersSortOrder: 'descending'
+        };
+        var request = 'http://api.ebaycommercenetwork.com/publisher/3.0/json/GeneralSearch?visitorUserAgent&visitorIPAddress&keyword='+encodeURIComponent((template.term || ''));
+        _.keys(options).map(function(k){ request=request+"&"+k+"="+options[k]; });
+        http.get(request, function(res){
+            var data = '';
+            res.setEncoding('utf-8')
+            res.on('data', function(chunk){
+                data += chunk
+            });
+            res.on('error', function(err) {
+                callback(err);
+            });
+            res.on('end', function(){
+                if (!data) callback(null, []);
+                else {
+                    try {
+                        data = JSON.parse(data);
+                        var err = null;
+                        if (data.exceptions && data.exceptions.exception && data.exceptions.exception.length)
+                            for (var i in data.exceptions.exception)
+                                if (data.exceptions.exception[i].type==="error") {
+                                    err = data.exceptions.exception[i].message;
+                                    break;
+                                }
+                        if (err) callback(err);
+                        else {
+                            var items = [];
+                            if (data.categories && data.categories.category && data.categories.category.length) {
+                                data.categories.category.map(function(category){
+                                    if (category.items && category.items.item && category.items.item.length) {
+                                        category.items.item.map(function(item){
+                                            if (item.product && item.product.offers && item.product.offers.offer) item = item.product.offers.offer;
+                                            else if (item.offer) item=[item.offer];
+                                            else item=[];
+                                            items = items.concat(item);
+                                        });
+                                    }
+                                });
+                            }
+                            callback(null, items.map(unifiers['shopping']));
+                        }
+                    } catch(e) { callback(e); }
+                }
+            });
+        });
+    }
+}
+
+var unifiers = {
+    'shopzilla': function(product){
+        var ret = {
+            id: product.id,
+            title : product.title || "",
+            merchantName: product.merchantName || "",
+            merchantLogoUrl: product.merchantLogoUrl || "",
+            url: global.HOST + '/productUrl?url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
+            price: product.price.value,
+            integral : product.price.integral,
+            description : product.description || ""
+        };
+
+        if (product.merchantRating && product.merchantRating.value != undefined){
+            ret.rating = product.merchantRating.value;
+        }
+
+        if (product.images && product.images.image){
+            var img;
+            ret.images = [];
+            for (var i = 0; i < product.images.image.length; i++){
+                img = product.images.image[i];
+                ret.images.push({size : img.xsize, url : img.value});
+            }
+        }
+        return ret;
+    },
+    'shopping': function(product) {
+        var ret = {
+            id: product.id,
+            title : product.name || "",
+            merchantName: ((product.store) ? (product.store.name || "") : ""),
+            merchantLogoUrl: ((product.store && product.store.logo) ? (product.store.logo.sourceURL || "") : ""),
+            url: global.HOST + '/productUrl?url=' + encodeURIComponent(product.offerURL), //the url goes to us, we will incr the monitoring and redirect to the right place
+            price: "$"+product.originalPrice.value,
+            integral : Math.round(product.originalPrice.value*100),
+            description : product.description || ""
+        };
+
+        if (product.store && product.store.ratingInfo && product.store.ratingInfo.rating)
+            ret.rating = product.store.ratingInfo.rating;
+
+        if (product.imageList && product.imageList.image){
+            var img;
+            ret.images = [];
+            for (var i = 0; i < product.imageList.image.length; i++){
+                img = product.imageList.image[i];
+                ret.images.push({size : img.width, url : img.sourceURL});
+            }
+        }
+        return ret;
+    }
 }
