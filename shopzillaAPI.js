@@ -285,43 +285,52 @@ var providers = {
             _.keys(options).map(function(k){ request=request+"&"+k+"="+options[k]; });
             http.get(request, function(res){
                 var data = '';
+                var networkError=undefined;
                 res.setEncoding('utf-8')
                 res.on('data', function(chunk){
                     data += chunk
                 });
                 res.on('error', function(err) {
+                    networkError=err;
                     callback(err);
                 });
                 res.on('end', function(){
-                    if (!data) callback(null, []);
-                    else {
-                        try {
-                            data = JSON.parse(data);
-                            var err = null;
-                            if (data.exceptions && data.exceptions.exception && data.exceptions.exception.length)
-                                for (var i in data.exceptions.exception)
-                                    if (data.exceptions.exception[i].type==="error") {
-                                        err = data.exceptions.exception[i].message;
-                                        break;
-                                    }
-                            if (err) callback(err);
-                            else {
-                                var items = [];
-                                if (data.categories && data.categories.category && data.categories.category.length) {
-                                    data.categories.category.map(function(category){
-                                        if (category.items && category.items.item && category.items.item.length) {
-                                            category.items.item.map(function(item){
-                                                if (item.product && item.product.offers && item.product.offers.offer) item = item.product.offers.offer;
-                                                else if (item.offer) item=[item.offer];
-                                                else item=[];
-                                                items = items.concat(item);
-                                            });
-                                        }
-                                    });
-                                }
-                                callback(null, items.map(unifiers['shopping']));
+                    if (!networkError) {
+                        var err=undefined;
+                        if (!data) callback(null, []);
+                        else {
+                            try {
+                                data = JSON.parse(data);
+                            } catch(e) {
+                                err=e;
                             }
-                        } catch(e) { callback(e); }
+                            if (!err) {
+                                if (data.exceptions && data.exceptions.exception && data.exceptions.exception.length)
+                                    for (var i in data.exceptions.exception)
+                                        if (data.exceptions.exception[i].type==="error") {
+                                            err = data.exceptions.exception[i].message;
+                                            break;
+                                        }
+                                if (err) callback(err);
+                                else {
+                                    var items = [];
+                                    if (data.categories && data.categories.category && data.categories.category.length) {
+                                        data.categories.category.map(function(category){
+                                            if (category.items && category.items.item && category.items.item.length) {
+                                                category.items.item.map(function(item){
+                                                    if (item.product && item.product.offers && item.product.offers.offer) item = item.product.offers.offer;
+                                                    else if (item.offer) item=[item.offer];
+                                                    else item=[];
+                                                    items = items.concat(item);
+                                                });
+                                            }
+                                        });
+                                    }
+                                    callback(null, items.map(unifiers['shopping']));
+                                }
+                            }
+                            else callback(err);
+                        }
                     }
                 });
             });
