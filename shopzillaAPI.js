@@ -17,8 +17,8 @@ var requestRetryCount= 5,
     attributesPath = 'services/catalog/v1/us/attributes?',
     taxonomyPath = 'services/catalog/v1/us/taxonomy?';
 apiBase =  {
-    apiKey : 'c84c5343e65de87f1c78e9e2abec8a92'
-    ,   publisherId :  602968
+    apiKey : global.keys['apiKey']
+    ,   publisherId :  global.keys['publisherId']
     ,   placementId : 1
     ,   format : 'json'
 };
@@ -64,7 +64,6 @@ var createQsFromObject = function (object){
                             results=[];
                         }
                         done=results;
-                        //global.shopzillaMonitor.timing(global.monitor.SHOPZILLA_RESPONSE_TIME, Date.now() - startTime);
                         next();
                     });
 

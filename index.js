@@ -8,13 +8,11 @@
 
 require('./categoriesMap.js');
 
-/*
- global.shopzillaMonitor = new StatsD({host: 'monitor.wishkicker.com',
- //port: 8125,
- prefix: (process.env.NODE_ENV || 'dev') + '.WK.NLP',
- dnsCache: true});
- */
+var fs = require('fs');
 
-module.exports = function(provider){
+var data = JSON.parse(fs.readFileSync("./keys.loc"));
+global.keys['apiKey'] = data['shopzillaApiKey'];
+global.keys['publisherId'] = data['shopzillaPublisherID'];
+module.exports = function(provider) {
     return require('./shopzillaAPI.js')(provider);
 }
