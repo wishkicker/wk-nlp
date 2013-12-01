@@ -291,11 +291,14 @@ var providers = {
                     data += chunk
                 });
                 res.on('error', function(err) {
-                    networkError=err;
-                    callback(err);
+                    if (!networkError) { //because we suspect end and error are happening if there's an error
+                        networkError=err;
+                        callback(err);
+                    }
                 });
                 res.on('end', function(){
-                    if (!networkError) {
+                    if (!networkError) {  //because we suspect end and error are happening if there's an error
+                        networkError=true;
                         var err=undefined;
                         if (!data) callback(null, []);
                         else {
