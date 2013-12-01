@@ -349,7 +349,7 @@ var unifiers = {
         };
 
         if (product.merchantRating && product.merchantRating.value != undefined){
-            ret.rating = product.merchantRating.value;
+            ret.rating = product.merchantRating.value/2;
         }
 
         if (product.images && product.images.image){
