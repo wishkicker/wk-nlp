@@ -8,6 +8,7 @@
 var async=require('async');
 var http = require('http'),
     _ = require('underscore'),
+    check = require('validator').check,
     decoder = new (require('string_decoder').StringDecoder)('utf8');
 
 /// local objects
@@ -357,7 +358,13 @@ var unifiers = {
             ret.images = [];
             for (var i = 0; i < product.images.image.length; i++){
                 img = product.images.image[i];
-                ret.images.push({size : img.xsize, url : img.value});
+                var valid=true;
+                try {
+                    check(img.value, "Skipped invalid url image").isUrl();
+                } catch (e) {
+                    valid =  false;
+                }
+                if (valid) ret.images.push({size : img.xsize, url : img.value});
             }
         }
         return ret;
@@ -382,7 +389,13 @@ var unifiers = {
             ret.images = [];
             for (var i = 0; i < product.imageList.image.length; i++){
                 img = product.imageList.image[i];
-                ret.images.push({size : img.width, url : img.sourceURL});
+                var valid=true;
+                try {
+                    check(img.sourceURL, "Skipped invalid url image").isUrl();
+                } catch (e) {
+                    valid =  false;
+                }
+                if (valid) ret.images.push({size : img.width, url : img.sourceURL});
             }
         }
         return ret;
