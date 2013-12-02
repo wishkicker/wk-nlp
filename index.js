@@ -10,7 +10,7 @@ require('./categoriesMap.js');
 
 var fs = require('fs');
 
-var data = JSON.parse(fs.readFileSync("./keys.loc"));
+var data = JSON.parse(fs.readFileSync(__dirname+"/keys.loc"));
 global.keys['apiKey'] = data['shopzillaApiKey'];
 global.keys['publisherId'] = data['shopzillaPublisherID'];
 module.exports = function(provider) {
