@@ -343,7 +343,7 @@ var unifiers = {
             title : product.title || "",
             merchantName: product.merchantName || "",
             merchantLogoUrl: product.merchantLogoUrl || "",
-            url: global.HOST + '/productUrl?offerId=' + product.id + 'url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
+            url: global.HOST + '/productUrl?offerId=' + product.id + '&url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
             price: product.price.value,
             integral : product.price.integral,
             description : product.description || "",
@@ -376,7 +376,7 @@ var unifiers = {
             title : product.name || "",
             merchantName: ((product.store) ? (product.store.name || "") : ""),
             merchantLogoUrl: ((product.store && product.store.logo) ? (product.store.logo.sourceURL || "") : ""),
-            url: global.HOST + '/productUrl?offerId=' + product.id + 'url=' + encodeURIComponent(product.offerURL), //the url goes to us, we will incr the monitoring and redirect to the right place
+            url: global.HOST + '/productUrl?offerId=' + product.id + '&url=' + encodeURIComponent(product.offerURL), //the url goes to us, we will incr the monitoring and redirect to the right place
             price: "$"+product.originalPrice.value,
             integral : Math.round(product.originalPrice.value*100),
             description : product.description || "",
