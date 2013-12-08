@@ -343,7 +343,7 @@ var unifiers = {
             title : product.title || "",
             merchantName: product.merchantName || "",
             merchantLogoUrl: product.merchantLogoUrl || "",
-            url: global.HOST + '/productUrl?url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
+            url: global.HOST + '/productUrl?offerId=' + product.id + 'url=' + encodeURIComponent(product.url.value), //the url goes to us, we will incr the monitoring and redirect to the right place
             price: product.price.value,
             integral : product.price.integral,
             description : product.description || "",
