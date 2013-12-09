@@ -389,7 +389,7 @@ var unifiers = {
         if (product.imageList && product.imageList.image){
             var img;
             ret.images = [];
-            for (var i = 0; i < product.imageList.image.length; i++){
+            for (var i = 0; i < Math.min(product.imageList.image.length, 4); i++){
                 img = product.imageList.image[i];
                 var valid=true;
                 try {
