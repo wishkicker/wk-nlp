@@ -269,8 +269,8 @@ var providers = {
     },
     'shopping': function(template, callback) {
         var options = {
-            apiKey: '41b69ffa-5ac7-4c43-be84-7ea99c746f8f',
-            trackingId: '8083663',
+            apiKey: global.keys['shoppingApiKey'],
+            trackingId: global.keys['shoppingTrackingId'],
             numItems: exports.provider['shopping'] || 0,
             showProductOffers: 'true',
             doSkipping: 'true',
