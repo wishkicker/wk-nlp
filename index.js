@@ -10,10 +10,6 @@ global.keys['publisherId'] = data['shopzillaPublisherID'];
 global.keys['shoppingApiKey'] = data['shoppingApiKey'];
 global.keys['shoppingTrackingId']= data['shoppingTrackingId'];
 
-if (!global.keys['apiKey'] || !global.keys['publisherId'] || !global.keys['shoppingApiKey'] || !global.keys['shoppingTrackingId']) {
-    throw 'Your keys.loc file is not at the right version!!! it is missing important keys!!!';
-}
-
 module.exports = function(provider) {
     return require('./shopzillaAPI.js')(provider);
 }
