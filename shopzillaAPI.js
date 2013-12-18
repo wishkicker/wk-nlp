@@ -97,7 +97,8 @@ module.exports = exports = function(provider){
             template.categoryId = categoryId;
             template.start = start;
             async.map(_.keys(provider), function(company, cb) {
-                providers[company](template, cb);
+                if (company!='wishkicker') providers[company](template, cb);
+                else (null, []);
             }, function(err, replies){
                 if (err) callback(err, template);
                 else {
