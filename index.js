@@ -3,8 +3,17 @@ require('./categoriesMap.js');
 var fs = require('fs');
 global.keys = (global.keys) ? global.keys : {};
 
+var keysSchema = [
+    "shopzillaApiKey",
+    "shopzillaPublisherID",
+    "shoppingApiKey",
+    "shoppingTrackingId",
+];
+
 var data = JSON.parse(fs.readFileSync(__dirname+"/keys.loc"));
-console.log('read keys from file '+__dirname+"/keys.loc"+': '+JSON.stringify(data));
+keysSchema.map(function(item){
+    if (!data[item]) throw 'SECURITY ERROR: Your keys.loc file is not at the right version!!! you are missing keys!!!'
+});
 global.keys['apiKey'] = data['shopzillaApiKey'];
 global.keys['publisherId'] = data['shopzillaPublisherID'];
 global.keys['shoppingApiKey'] = data['shoppingApiKey'];
