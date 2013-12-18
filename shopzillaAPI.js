@@ -257,7 +257,7 @@ var providers = {
             imageOnly : true}, apiBase);
         ShopzillaApiCall(productApiPath, query, template, function (err, products){
             if(err){
-                callback("Got error at getProducts: " + err.message, null);
+                callback("Got error at shopzilla products: " + err.message, null);
             }
             else if(products.offers && products.offers.offer){
                 var results = products.offers.offer.map(unifiers['shopzilla']);
@@ -325,7 +325,7 @@ var providers = {
                                 callback(null, items.map(unifiers['shopping']));
                             }
                         }
-                        else callback(err);
+                        else callback("got error at shopping products:" + err);
                     }
                 });
             });
