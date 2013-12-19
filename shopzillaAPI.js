@@ -339,6 +339,7 @@ var providers = {
 
 var unifiers = {
     'shopzilla': function(product){
+	    product.id = "sz." + product.id;
         var ret = {
             id: product.id,
             title : product.title || "",
@@ -372,6 +373,7 @@ var unifiers = {
         return ret;
     },
     'shopping': function(product) {
+	    product.id = "sp." + product.id;
         var ret = {
             id: product.id,
             title : product.name || "",
