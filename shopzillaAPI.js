@@ -94,18 +94,15 @@ module.exports = exports = function(provider){
             });
         },
         getProducts: function (template, start, categoryId, callback){
+	        var results = [];
             template.categoryId = categoryId;
             template.start = start;
             async.map(_.keys(provider), function(company, cb) {
-                if (company!='wishkicker') providers[company](template, cb);
-                else cb(null, []);
+                if (company!='wishkicker') providers[company](template, results, cb);
+                else cb();
             }, function(err, replies){
                 if (err) callback(err, template);
-                else {
-                    var results = [];
-                    replies.map(function(arr){ results = results.concat(arr); });
-                    callback(null, results);
-                }
+                else callback(null, results);
             });
         },
         getAttributes: function (template, categoryId, callback){
@@ -237,7 +234,7 @@ var lib = {
 }
 
 var providers = {
-    'shopzilla': function(template, callback) {
+    'shopzilla': function(template, reply, callback) {
         var query = _.extend({
             placementId : 1,
             productIdType : 'SZPID',
@@ -260,15 +257,16 @@ var providers = {
                 callback("Got error at shopzilla products: " + err.message, null);
             }
             else if(products.offers && products.offers.offer){
-                var results = products.offers.offer.map(unifiers['shopzilla']);
-                callback(null, results);
+	            var usedIds = {};
+	            standardResults(products.offers.offer, usedIds, reply, unifiers['shopzilla']);
+	            callback();
             }
             else {
-                callback(null, []);
+                callback();
             }
         });
     },
-    'shopping': function(template, callback) {
+    'shopping': function(template, reply, callback) {
         var options = {
             apiKey: global.keys['shoppingApiKey'],
             trackingId: global.keys['shoppingTrackingId'],
@@ -278,7 +276,7 @@ var providers = {
             itemsSortType: 'relevance',
             itemsSortOrder: 'descending',
             productOffersSortType: 'relevance',
-            productOffersSortOrder: 'descending',
+            productOffersSortOrder: 'descending'
         };
         if (global.categoriesMap['shopping'][template.categoryId] || !template.categoryId) {
             if (template.categoryId) options['categoryId'] = global.categoriesMap['shopping'][template.categoryId].id;
@@ -322,7 +320,9 @@ var providers = {
                                         }
                                     });
                                 }
-                                callback(null, items.map(unifiers['shopping']));
+	                            var usedIds = {};
+	                            standardResults(items, usedIds, reply, unifiers['shopping']);
+	                            callback();
                             }
                         }
                         else callback("got error at shopping products:" + err);
@@ -405,4 +405,13 @@ var unifiers = {
         }
         return ret;
     }
+}
+
+var standardResults = function(items, usedIds, reply, unifier) {
+	items.map(function(item) {
+		if (!usedIds[item.id]) {
+			usedIds[item.id] = true;
+			reply[reply.length] = unifier(item);
+		}
+	});
 }
