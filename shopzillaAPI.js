@@ -94,7 +94,7 @@ module.exports = exports = function(provider){
             });
         },
         getProducts: function (template, start, categoryId, callback){
-	        var results = [];
+            var results = {list: {}, count: 0};
             template.categoryId = categoryId;
             template.start = start;
             async.map(_.keys(provider), function(company, cb) {
@@ -257,9 +257,9 @@ var providers = {
                 callback("Got error at shopzilla products: " + err.message, null);
             }
             else if(products.offers && products.offers.offer){
-	            var usedIds = {};
-	            standardResults(products.offers.offer, usedIds, reply, unifiers['shopzilla']);
-	            callback();
+                var usedIds = {};
+                standardResults(products.offers.offer, usedIds, reply, unifiers['shopzilla']);
+                callback();
             }
             else {
                 callback();
@@ -320,9 +320,9 @@ var providers = {
                                         }
                                     });
                                 }
-	                            var usedIds = {};
-	                            standardResults(items, usedIds, reply, unifiers['shopping']);
-	                            callback();
+                                var usedIds = {};
+                                standardResults(items, usedIds, reply, unifiers['shopping']);
+                                callback();
                             }
                         }
                         else callback("got error at shopping products:" + err);
@@ -339,9 +339,9 @@ var providers = {
 
 var unifiers = {
     'shopzilla': function(product){
-	    product.id = "sz." + product.id;
+        product.id = "sz." + product.id;
         var ret = {
-            id: product.id,
+            offerId: product.id,
             title : product.title || "",
             merchantName: product.merchantName || "",
             merchantLogoUrl: product.merchantLogoUrl || "",
@@ -349,7 +349,7 @@ var unifiers = {
             price: product.price.value,
             integral : product.price.integral,
             description : product.description || "",
-	        provider : "shopzilla"
+            provider : "shopzilla"
         };
 
         if (product.merchantRating && product.merchantRating.value != undefined){
@@ -373,9 +373,9 @@ var unifiers = {
         return ret;
     },
     'shopping': function(product) {
-	    product.id = "sp." + product.id;
+        product.id = "sp." + product.id;
         var ret = {
-            id: product.id,
+            offerId: product.id,
             title : product.name || "",
             merchantName: ((product.store) ? (product.store.name || "") : ""),
             merchantLogoUrl: ((product.store && product.store.logo) ? (product.store.logo.sourceURL || "") : ""),
@@ -383,7 +383,7 @@ var unifiers = {
             price: "$"+product.originalPrice.value,
             integral : Math.round(product.originalPrice.value*100),
             description : product.description || "",
-	        provider : "shopping"
+            provider : "shopping"
         };
 
         if (product.store && product.store.ratingInfo && product.store.ratingInfo.rating)
@@ -408,10 +408,18 @@ var unifiers = {
 }
 
 var standardResults = function(items, usedIds, reply, unifier) {
-	items.map(function(item) {
-		if (!usedIds[item.id]) {
-			usedIds[item.id] = true;
-			reply[reply.length] = unifier(item);
-		}
-	});
+    if (!items.length) return;
+    if (!reply.mainImage) {
+        if (items[0].imageList && items[0].imageList.image && items[0].imageList.image.length) reply.mainImage = items[0].imageList.image[items[0].imageList.image.length-1].sourceURL;
+        else if (items[0].images && items[0].images.image && items[0].images.image.length) reply.mainImage = items[0].images.image[items[0].images.image.length-1].value;
+    }
+    items.map(function(item) {
+        if (!usedIds[item.id]) {
+            usedIds[item.id] = true;
+            var unified = unifier(item);
+            if (!reply.list[unified.integral]) reply.list[unified.integral]=[];
+            reply.list[unified.integral][reply.list[unified.integral].length] = unified;
+            reply.count++;
+        }
+    });
 }
