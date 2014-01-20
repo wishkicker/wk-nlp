@@ -52,9 +52,10 @@ var createQsFromObject = function (object){
         query.categoryId = template.categoryId || '';
         var tries = 0, done = undefined;
         var startTime = Date.now();
+        var url = shopzillaHost + path + createQsFromObject(query);
         async.timesSeries(requestRetryCount, function(n, next) {
             if (!done) {
-                http.get(shopzillaHost + path + createQsFromObject(query), function(res) {
+                http.get(url, function(res) {
                     tries++;
                     res.on('data', function (chunk){
                         buffer += (decoder.write(chunk));
@@ -74,6 +75,7 @@ var createQsFromObject = function (object){
             }
             else next();
         }, function(err){
+            console.log("shopzilla call "+url+" returned   //elapsed "+(Date.now()-startTime));
             callback(err, results);
         });
     };
