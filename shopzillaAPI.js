@@ -254,6 +254,7 @@ var providers = {
             attributeId: '',
             resultsAttribute: 10,
             imageOnly : true}, apiBase);
+
         ShopzillaApiCall(productApiPath, query, template, function (err, products){
             if(err){
                 callback("Got error at shopzilla products: " + err.message, null);
@@ -273,7 +274,8 @@ var providers = {
             apiKey: global.keys['shoppingApiKey'],
             trackingId: global.keys['shoppingTrackingId'],
             numItems: exports.provider['shopping'] || 0,
-            showProductOffers: 'true',
+            showOffersOnly: 'true',
+            numAttributes: 0,
             doSkipping: 'true',
             itemsSortType: 'relevance',
             itemsSortOrder: 'descending',
@@ -284,6 +286,7 @@ var providers = {
             if (template.categoryId) options['categoryId'] = global.categoriesMap['shopping'][template.categoryId].id;
             var request = 'http://api.ebaycommercenetwork.com/publisher/3.0/json/GeneralSearch?visitorUserAgent&visitorIPAddress&keyword='+encodeURIComponent((template.term || ''));
             _.keys(options).map(function(k){ request=request+"&"+k+"="+options[k]; });
+            var start = Date.now();
             http.get(request, function(res){
                 var data = '';
                 res.setEncoding('utf-8')
@@ -292,6 +295,7 @@ var providers = {
                 });
                 res.on('end', function(chunk){
                     data += (chunk || '');
+                    console.log("shopping returned "+(Date.now()-start));
                     var err=undefined;
                     if (!data) callback('Error has occured at shopzillaAPI.providers.shopping() - no data returned from request', []);
                     else {
@@ -314,10 +318,7 @@ var providers = {
                                     data.categories.category.map(function(category){
                                         if (category.items && category.items.item && category.items.item.length) {
                                             category.items.item.map(function(item){
-                                                if (item.product && item.product.offers && item.product.offers.offer) item = item.product.offers.offer;
-                                                else if (item.offer) item=[item.offer];
-                                                else item=[];
-                                                items = items.concat(item);
+                                                if (item.offer) items[items.length]=item.offer;
                                             });
                                         }
                                     });
