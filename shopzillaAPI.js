@@ -96,7 +96,7 @@ module.exports = exports = function(provider){
             });
         },
         getProducts: function (template, start, categoryId, callback){
-            var results = {list: {}, count: 0};
+            var results = {products: {}, list: {}, count: 0};
             template.categoryId = categoryId;
             template.start = start;
             async.map(_.keys(provider), function(company, cb) {
@@ -295,7 +295,7 @@ var providers = {
                 });
                 res.on('end', function(chunk){
                     data += (chunk || '');
-                    console.log("shopping returned "+(Date.now()-start));
+                    console.log("shopping products call for term "+(template.term || '')+" returned  //elapsed"+(Date.now()-start));
                     var err=undefined;
                     if (!data) callback('Error has occured at shopzillaAPI.providers.shopping() - no data returned from request', []);
                     else {
@@ -422,6 +422,7 @@ var standardResults = function(items, usedIds, reply, unifier) {
             var unified = unifier(item);
             if (!reply.list[unified.integral]) reply.list[unified.integral]=[];
             reply.list[unified.integral][reply.list[unified.integral].length] = unified;
+            reply.products[item.id] = unified;
             reply.count++;
         }
     });
