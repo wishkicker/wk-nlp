@@ -114,8 +114,7 @@ module.exports = exports = function(provider){
                 ,   categoryId: categoryId
                 ,   sort: 'name_asc'
                 ,   resultsAttributeValues: 10}, apiBase);
-            if (template && template[0]) {
-                template = template[0];
+            if (template) {
                 ShopzillaApiCall(attributesPath, query, template, function (err, results){
                     if(err){
                         callback(err, null);
@@ -165,7 +164,7 @@ module.exports = exports = function(provider){
             lib.getMaxCategories({term: term, user: "wishkicker"}, SUFFICIENT_PROBABILITY, MAX_SEARCH_CATEGORIES, callback);
         },
         search : function (term, categoryId, user, callback){
-            exports(provider).getAttributes(template, categoryId, callback);
+            exports(provider).getAttributes({term: term, user: user}, categoryId, callback);
         }
     };
 };
