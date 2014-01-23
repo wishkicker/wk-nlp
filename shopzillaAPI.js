@@ -165,15 +165,7 @@ module.exports = exports = function(provider){
             lib.getMaxCategories({term: term, user: "wishkicker"}, SUFFICIENT_PROBABILITY, MAX_SEARCH_CATEGORIES, callback);
         },
         search : function (term, categoryId, user, callback){
-            async.waterfall([
-                function(template, cb){
-                    exports(provider).getCategoryWithMaxProb({term : term, user: user}, cb);
-                },
-                function(template, cb){
-                    exports(provider).getAttributes(template, categoryId, cb);
-                }
-            ],
-                callback);
+            exports(provider).getAttributes(template, categoryId, callback);
         }
     };
 };
