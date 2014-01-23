@@ -295,7 +295,7 @@ var providers = {
                 });
                 res.on('end', function(chunk){
                     data += (chunk || '');
-                    console.log("shopping products call for term "+(template.term || '')+" returned  //elapsed"+(Date.now()-start));
+                    console.log("shopping products call for term "+(template.term || '')+" returned  //elapsed "+(Date.now()-start));
                     var err=undefined;
                     if (!data) callback('Error has occured at shopzillaAPI.providers.shopping() - no data returned from request', []);
                     else {
