@@ -166,11 +166,8 @@ module.exports = exports = function(provider){
         },
         search : function (term, categoryId, user, callback){
             async.waterfall([
-                function (cb){
-                    cb(null, {term : term, user: user});
-                },
                 function(template, cb){
-                    exports(provider).getCategoryWithMaxProb(template, cb);
+                    exports(provider).getCategoryWithMaxProb({term : term, user: user}, cb);
                 },
                 function(template, cb){
                     exports(provider).getAttributes(template, categoryId, cb);
